@@ -1,0 +1,107 @@
+.shop-container {
+    margin: 5rem 0;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.shop-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+.shop-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.shop-content p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.shop-content p a{
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.shop-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.shop-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.shop-card {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+}
+
+.shop-details-container {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.shop-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.shop-card p {
+    font-family: var(--font-inter);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 25px;
+    word-spacing: 2px;
+    text-align: left;
+}
+
+.value-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.shop-text-span {
+    display: flex;
+    gap: 1.5rem;
+}

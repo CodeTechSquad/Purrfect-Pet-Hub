@@ -10,6 +10,7 @@
       href="{{ asset('images/favicon.ico') }}"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     @yield('head')
   </head>
   @yield('body')

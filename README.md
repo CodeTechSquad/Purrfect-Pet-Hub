@@ -1,6 +1,6 @@
 # Purrfect Pet Hub
 
-<img src="./public/images/Logo.png" height=100>
+<img src="./public/images/logo.png" height=100>
 
 ## Description
 

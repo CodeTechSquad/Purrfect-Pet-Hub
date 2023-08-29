@@ -47,16 +47,16 @@
         <h3 class="font-bold">Gallery</h3>
         <div class="gallery-grid">
           <div class="image">
-            <img src="images/footer-images/pic1.png" alt="" />
+            <img src="images/gallery/pic1.png" alt="" />
           </div>
           <div class="image">
-            <img src="images/footer-images/pic2.png" alt="" />
+            <img src="images/gallery/pic2.png" alt="" />
           </div>
           <div class="image">
-            <img src="images/footer-images/pic3.png" alt="" />
+            <img src="images/gallery/pic3.png" alt="" />
           </div>
           <div class="image">
-            <img src="images/footer-images/pic4.png" alt="" />
+            <img src="images/gallery/pic4.png" alt="" />
           </div>
         </div>
       </div>

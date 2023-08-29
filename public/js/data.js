@@ -208,3 +208,66 @@ export const blogs = [
     //     link: 'https://www.porch.com/advice/moving-with-pets/',
     // },
 ];
+
+export const gallery = [
+    {
+        id: 1,
+        img: 'images/gallery/pic1.png',
+        title: 'image1',
+    },
+    {
+        id: 2,
+        img: 'images/gallery/pic2.png',
+        title: 'image2',
+    },
+    {
+        id: 3,
+        img: 'images/gallery/pic3.png',
+        title: 'image3',
+    },
+    {
+        id: 4,
+        img: 'images/gallery/pic4.png',
+        title: 'image4',
+    },
+    {
+        id: 5,
+        img: 'images/gallery/pic5.png',
+        title: 'image5',
+    },
+    {
+        id: 6,
+        img: 'images/gallery/pic6.png',
+        title: 'image6',
+    },
+    {
+        id: 7,
+        img: 'images/gallery/pic7.png',
+        title: 'image7',
+    },
+    {
+        id: 8,
+        img: 'images/gallery/pic8.png',
+        title: 'image8',
+    },
+    {
+        id: 9,
+        img: 'images/gallery/pic9.png',
+        title: 'image9',
+    },
+    {
+        id: 10,
+        img: 'images/gallery/pic10.png',
+        title: 'image10',
+    },
+    {
+        id: 11,
+        img: 'images/gallery/pic11.png',
+        title: 'image11',
+    },
+    {
+        id: 12,
+        img: 'images/gallery/pic12.png',
+        title: 'image12',
+    },
+]

@@ -1,5 +1,4 @@
 @extends('main') @section('title') About @endsection @section('head')
-<link rel="stylesheet" href="{{ asset('css/main.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/about.css') }}" />
 @endsection @section('body')
 <body>

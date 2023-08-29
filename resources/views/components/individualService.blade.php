@@ -1,4 +1,10 @@
-@extends('main') @section('title') Gallery @endsection @section('head')
+@extends('main') 
+
+@section('title') Services @endsection 
+
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/individualService.css') }}" />
+@endsection @section('body')
 <link rel="stylesheet" href="{{ asset('css/gallery.css') }}" />
 @endsection @section('body')
 <body>

@@ -49,3 +49,12 @@ Route::get('/contact', function () {
     return View::make('pages.contact');
 });
 
+Route::get('/admin', function () {
+    return View::make('pages.admin');
+});
+
+
+
+Route::get('/dbconn', function () {
+    return View::make('dbconn');
+});

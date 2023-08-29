@@ -1,8 +1,8 @@
-@extends('main') 
+@extends('main') @section('title') Register @endsection 
 
-@section('title') Register @endsection
-
+@section('head')
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}" />
+@endsection 
 
 @section('body')
 <body>
@@ -15,7 +15,7 @@
   <img src="images/register-bird.png" alt="login-bg" class="login-bg" />
 
   <!-- <form id="form" action="/" method="post"> -->
-    <form>
+  <form>
     <div class="social">
       <h1 class="title">Create your account</h1>
       <p class="title-p">Enter your details to create a account.</p>
