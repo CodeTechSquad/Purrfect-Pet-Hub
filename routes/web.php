@@ -30,6 +30,8 @@ Route::get('/login', [AuthController::class, 'login']);
 // });
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
+Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
+Route::get('/home', [AuthController::class, 'home'])->name('home');
 
 Route::get('/about', function () {
     return View::make('pages.about');

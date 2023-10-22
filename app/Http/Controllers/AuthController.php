@@ -36,4 +36,27 @@ class AuthController extends Controller
             return back()->with('fail', 'Something went wrong');
         }
     }
+
+    public function loginUser (Request $request) {
+        $request->validate([
+            'email' => 'email|required|',
+            'password' => 'required|min:6|max:12'
+        ]);
+        //Database
+        $user = User::where('email', '=', $request->email)->first();
+        if($user) {
+            if(Hash::check($request->password, $user->password)) {
+                $request->session()->put('LoggedUser', $user->id);
+                return redirect('home');
+            } else {
+                return back()->with('fail', 'Invalid password');
+            }
+        } else {
+            return back()->with('fail', 'No account found for this email');
+        }
+}
+
+public function home () {
+    return view("pages.home");
+}
 }
