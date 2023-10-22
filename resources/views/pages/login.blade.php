@@ -57,7 +57,8 @@
       >
       <span><a href="{{ url('/forgot-password') }}">Forgot Password?</a></span>
     </p>
-    <button type="submit">Sign In</button>
+    <button class="btn-block btn-primary" type="submit">Sign In</button>
+
 
     <div class="separator">
       <hr class="line" />
