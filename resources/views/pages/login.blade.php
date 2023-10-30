@@ -10,7 +10,16 @@
 
   <img src="images/login-dog.png" alt="login-bg" class="login-bg" />
 
-  <form id="form" action="/" method="post">
+  <form action= "{{ route('login-user') }}" method="post">
+            @if(Session::get('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif (Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail') }}
+                </div>
+            @csrf
     <div class="social">
       <h1 class="title">Welcome Back User!</h1>
       <p class="title-p">Enter your details to sign in to your account.</p>
@@ -22,6 +31,8 @@
       <i class="far fa-envelope"></i>
 
       <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+      <span class = "text-danger">@error('email'){{ $message }} @enderror</span>
+
 
       <i class="fas fa-exclamation-circle failure-icon"></i>
       <i class="far fa-check-circle success-icon"></i>
@@ -40,6 +51,8 @@
         id="password"
         placeholder="Enter your password"
       />
+      <span class = "text-danger">@error('password'){{ $message }} @enderror</span>
+
 
       <i class="fas fa-exclamation-circle failure-icon"></i>
       <i class="far fa-check-circle success-icon"></i>
@@ -57,7 +70,8 @@
       >
       <span><a href="{{ url('/forgot-password') }}">Forgot Password?</a></span>
     </p>
-    <button type="submit">Sign In</button>
+    <button class="btn-block btn-primary" type="submit">Sign In</button>
+
 
     <div class="separator">
       <hr class="line" />

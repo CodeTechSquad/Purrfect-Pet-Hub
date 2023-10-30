@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +19,19 @@ Route::get('/', function () {
     return View::make('pages.home');
 });
 
-Route::get('/login', function () {
-    return View::make('pages.login');
-});
+// Route::get('/login', function () {
+//     return View::make('pages.login');
+// });
+Route::get('/login', [AuthController::class, 'login']);
 
-Route::get('/register', function () {
-    return View::make('pages.register');
-});
+
+// Route::get('/register', function () {
+//     return View::make('pages.register');
+// });
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
+Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
+Route::get('/home', [AuthController::class, 'home'])->name('home');
 
 Route::get('/about', function () {
     return View::make('pages.about');

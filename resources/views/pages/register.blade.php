@@ -15,7 +15,17 @@
   <img src="images/register-bird.png" alt="login-bg" class="login-bg" />
 
   <!-- <form id="form" action="/" method="post"> -->
-  <form>
+  <!-- <form action="{{route('register-user')}}" method="post"> -->
+  <form id = "form" action="{{route('register-user')}}" method="post">    
+            @if(Session::get('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                </div>
+            @endif (Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail') }}
+                </div>
+            @csrf
     <div class="social">
       <h1 class="title">Create your account</h1>
       <p class="title-p">Enter your details to create a account.</p>
@@ -32,7 +42,9 @@
           name="first_name"
           id="first_name"
           placeholder="Tanmay"
+          value="{{ old('first_name') }}"
         />
+        <span class = "text-danger">@error('first_name'){{ $message }} @enderror</span>
 
         <i class="fas fa-exclamation-circle failure-icon"></i>
         <i class="far fa-check-circle success-icon"></i>
@@ -48,7 +60,10 @@
           name="last_name"
           id="last_name"
           placeholder="Seimens"
+          value="{{ old('last_name') }}"
         />
+        <span class = "text-danger">@error('last_name'){{ $message }} @enderror</span>
+
       </div>
     </div>
 
@@ -62,8 +77,10 @@
         name="email"
         id="email"
         placeholder="tanmay@gmail.com"
+        value="{{ old('email') }}"
       />
-
+      <span class = "text-danger">@error('email'){{ $message }} @enderror</span>
+   
       <i class="fas fa-exclamation-circle failure-icon"></i>
       <i class="far fa-check-circle success-icon"></i>
 
@@ -81,6 +98,7 @@
         id="password"
         placeholder="Enter your password"
       />
+      <span class = "text-danger">@error('password'){{ $message }} @enderror</span>
 
       <i class="fas fa-exclamation-circle failure-icon"></i>
       <i class="far fa-check-circle success-icon"></i>
@@ -97,7 +115,7 @@
       />I agree to the
       <span style="text-decoration: underline;">Terms & Privacy.</span>
     </p>
-    <button type="submit">Create Account</button>
+    <button class="btn-block btn-primary" type="submit">Create Account</button>
 
     <div class="separator">
       <hr class="line" />
@@ -113,7 +131,7 @@
     </div>
     <div class="question">
       Already have an account?
-      <span><a href="{{ url('/login') }} ">Log In</a></span>
+      <span><a href="login">Log In</a></span>
     </div>
   </form>
 </body>
