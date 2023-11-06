@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -47,7 +48,7 @@ class AuthController extends Controller
         if($user) {
             if(Hash::check($request->password, $user->password)) {
                 $request->session()->put('LoggedUser', $user->id);
-                return redirect('home');
+                return redirect('dashboard');
             } else {
                 return back()->with('fail', 'Invalid password');
             }
@@ -56,7 +57,21 @@ class AuthController extends Controller
         }
 }
 
-public function home () {
-    return view("pages.home");
+public function dashboard () {
+    $data = array();
+    // if(session()->has('LoggedUser')) {
+    //     $data = User::find(session('LoggedUser'));
+    // }
+    if(Session::has('LoggedUser')) {
+        $data = User::where('id', '=', Session::get('LoggedUser'))->first();
+    }
+    return view('dashboard', compact('data'));
+}
+
+public function logout () {
+    if(session()->has('LoggedUser')) {
+        session()->pull('LoggedUser');
+        return redirect('login');
+    }
 }
 }
