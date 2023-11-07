@@ -22,16 +22,12 @@ Route::get('/', function () {
 // Route::get('/login', function () {
 //     return View::make('pages.login');
 // });
-Route::get('/login', [AuthController::class, 'login']);
-
-
-// Route::get('/register', function () {
-//     return View::make('pages.register');
-// });
-Route::get('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'login'])->middleware('alreadyLoggedIn');
+Route::get('/register', [AuthController::class, 'register'])->middleware('alreadyLoggedIn');
 Route::post('/register-user', [AuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/home', [AuthController::class, 'home'])->name('home');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('isLoggedIn');
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/about', function () {
     return View::make('pages.about');
