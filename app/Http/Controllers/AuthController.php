@@ -59,9 +59,6 @@ class AuthController extends Controller
 
 public function dashboard () {
     $data = array();
-    // if(session()->has('LoggedUser')) {
-    //     $data = User::find(session('LoggedUser'));
-    // }
     if(Session::has('LoggedUser')) {
         $data = User::where('id', '=', Session::get('LoggedUser'))->first();
     }

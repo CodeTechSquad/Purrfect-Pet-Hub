@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -62,3 +63,16 @@ Route::get('/admin', function () {
 Route::get('/dbconn', function () {
     return View::make('dbconn');
 });
+
+//Admin Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware(['guest:admin'])->group(function () {
+        Route::get('/login', [AdminController::class, 'showLoginForm'])->name('login');
+        Route::post('/login_handler', [AdminController::class, 'login_handler'])->name('login_handler');
+    });
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::get('/home', [AdminController::class, 'showHome'])->name('home');
+    });
+});
+

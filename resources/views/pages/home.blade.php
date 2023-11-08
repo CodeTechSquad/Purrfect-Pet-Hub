@@ -7,11 +7,11 @@
     Call us for Veterinary Support:
     <a href="tel:+977-9810101020">+977-9810101020</a>
   </div>
-
   @include('components.nav')
 
   <!-- Main section starts -->
   <main>
+  <a href="{{ route('admin.login') }}">Admin Login</a>
     <!-- Hero Section -->
     <section class="hero">
       <p class="image-text">
