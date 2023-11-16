@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-
+use App\Models\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +72,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/home', [AdminController::class, 'showHome'])->name('home');
+        Route::get('/home', [AdminController::class, 'index'])->name('home');
+
     });
+    Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+     // User Management
+     Route::get('/users', [AdminController::class, 'index'])->name('index');
+     Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('edit');
+     Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('destroy');
+
 });
+
 
