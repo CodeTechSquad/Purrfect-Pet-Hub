@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Models\Admin;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
      Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('edit');
      Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('destroy');
 
+     // Blog Management
+        Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::post('/blogs', [BlogController::class, 'store'])->name('blog.store');
+        Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('edit');
 });
 
 
