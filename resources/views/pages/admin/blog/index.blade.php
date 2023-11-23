@@ -21,16 +21,41 @@
         <!-- Main section starts -->
         <main class="blog-container">
             <h1>Our Blogs</h1>
-            <div class="blog-content-container">
+            <table class ="table-hover">
+                <thead>
+                    <tr>
+                        <th> S.No </th>
+                        <th> Title  </th>
+                        <th>  Description   </th>
+                        <th>   Images</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($blogs as $blog)
+                    <tr>
+                        <td>{{ $loop->index+1 }}</td>
+                        <td>{{ $blog->title }}</td>
+                        <td>{{ $blog->description }}</td>
+                        <td><img src="{{ asset('blog_images/' . $blog->image) }}"></td>
+                        <form method="post" action="{{ route('admin.blogs.delete', $blog->id) }}" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <!-- <div class="blog-content-container">
                 @foreach ($blogs as $blog)
-                    <div class="blog-content">
-                        <img src="{{ asset($blog->image_path) }}" alt="{{ $blog->title }}">
+                    <div class="blog-content"> -->
+                        <!-- Adjusted the image path -->
+                        <!-- <img src="blogs/{{ $blog->image }}">
                         <h2>{{ $blog->title }}</h2>
                         <p>{{ $blog->description }}</p>
                         <a href="{{ $blog->link }}" target="_blank">View Details</a>
-                    </div>
-                @endforeach
-            </div>
+                    </div> -->
+                <!-- @endforeach
+            </div> -->
         </main>
 
         <!-- Footer section  -->

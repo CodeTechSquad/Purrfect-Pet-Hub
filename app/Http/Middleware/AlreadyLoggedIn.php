@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Session;
 
 class AlreadyLoggedIn
 {
@@ -14,10 +15,11 @@ class AlreadyLoggedIn
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        if(session()->has('LoggedUser')) {
-            return redirect('dashboard');
+        {
+            if(!Session::get('LoggedUser')) {
+                return redirect('admin/login')->with('fail', 'You must be logged in');
+            }
+            return $next($request);
         }
-        return $next($request);
-    }
+    
 }

@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 
+
 class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::all();
-        return view('pages.admin.blog.index', compact('blogs'));
+        //$blogs = Blog::all();
+        //return view('pages.admin.blog.index', compact('blogs'));
+        return view('pages.admin.blog.index', ['blogs' => Blog::get() ]);
     }
 
     public function create()
@@ -20,20 +22,33 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+
+        //validation
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
 
-        $imagePath = $request->file('image')->store('blog_images');
+        //upload images
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('blog_images'), $imageName);
 
-        Blog::create([
-            'title' => $validatedData['title'],
-            'description' => $validatedData['description'],
-            'image_path' => $imagePath,
-        ]);
+        $blog = new Blog();
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->image = $imageName;
 
-        return redirect()->route('admin.blog.index')->with('success', 'Blog post created successfully!');
+        $blog->save();
+
+        return back()->withSuccess('Blog post created successfully!');
     }
-}
+
+        public function delete(Blog $blog)
+        {
+            $blog->delete();
+            return redirect()->route('admin.blog.index');
+        }
+
+}    

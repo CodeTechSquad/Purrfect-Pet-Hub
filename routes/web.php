@@ -72,10 +72,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/login_handler', [AdminController::class, 'login_handler'])->name('login_handler');
     });
 
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/home', [AdminController::class, 'index'])->name('home');
+        Route::middleware(['auth:admin'])->group(function () {
+            Route::get('/home', [AdminController::class, 'index'])->name('home');
+ 
 
-    });
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
      // User Management
      Route::get('/users', [AdminController::class, 'index'])->name('index');
@@ -85,8 +85,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
      // Blog Management
         Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
         Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
-        Route::post('/blogs', [BlogController::class, 'store'])->name('blog.store');
-        Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('edit');
-});
+        Route::post('/blogs/store', [BlogController::class, 'store'])->name('blog.store');
+        Route::delete('/blogs/{blog}', [BlogController::class, 'delete'])->name('blogs.delete');
+        ;
 
+    });
+});
 
