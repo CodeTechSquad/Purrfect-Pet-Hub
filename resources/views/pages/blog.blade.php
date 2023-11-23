@@ -14,6 +14,16 @@
   <main class="blog-container">
       <h1>Our Blogs</h1>
       <div class="blog-content-container"></div>
+      @foreach ($blogs as $blog)
+                    <div class="blog-content">
+                        <img src="{{ asset('blog_images/' . $blog->image) }}" alt="{{ $blog->title }} style= "height =200" >
+                        <h2>{{ $blog->title }}</h2>
+                        <p>{{ $blog->description }}</p>
+
+                        <a href="{{ $blog->link }}" target="_blank">View Details</a>
+                    </div>
+                @endforeach
+            </div>
   </main>
 
   <!-- Footer section  -->

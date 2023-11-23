@@ -39,9 +39,7 @@ Route::get('/services', function () {
     return View::make('pages.services');
 });
 
-Route::get('/blog', function () {
-    return View::make('pages.blog');
-});
+Route::get('/blog', [AuthController::class, 'blog'])->middleware('isLoggedIn');
 
 Route::get('/shop', function () {
     return View::make('pages.shop');
