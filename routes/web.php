@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Models\Admin;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,7 @@ Route::get('/services', function () {
     return View::make('pages.services');
 });
 
-Route::get('/blog', function () {
-    return View::make('pages.blog');
-});
+Route::get('/blog', [AuthController::class, 'blog'])->middleware('isLoggedIn');
 
 Route::get('/shop', function () {
     return View::make('pages.shop');
@@ -71,16 +70,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/login_handler', [AdminController::class, 'login_handler'])->name('login_handler');
     });
 
-    Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/home', [AdminController::class, 'index'])->name('home');
+        Route::middleware(['auth:admin'])->group(function () {
+            Route::get('/home', [AdminController::class, 'index'])->name('home');
+ 
 
-    });
     Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
      // User Management
      Route::get('/users', [AdminController::class, 'index'])->name('index');
      Route::get('/users/{user}/edit', [AdminController::class, 'edit'])->name('edit');
      Route::delete('/users/{user}', [AdminController::class, 'destroy'])->name('destroy');
 
-});
+     // Blog Management
+        Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('/blogs/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::post('/blogs/store', [BlogController::class, 'store'])->name('blog.store');
+        Route::delete('/blogs/{blog}', [BlogController::class, 'delete'])->name('blogs.delete');
+        ;
 
+    });
+});
 

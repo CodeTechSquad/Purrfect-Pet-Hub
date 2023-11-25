@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Hash;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -70,5 +71,11 @@ public function logout () {
         session()->pull('LoggedUser');
         return redirect('login');
     }
+}
+
+public function blog()
+{
+    $blogs = Blog::all(); // Retrieve all blog posts from the database
+    return view("pages.blog", compact('blogs'));
 }
 }

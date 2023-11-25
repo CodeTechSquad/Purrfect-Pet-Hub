@@ -32,6 +32,8 @@
         </tbody>
     </table>
 
+    <a href="{{ route('admin.blog.create') }}">Create Blog Post</a>
+
 @endsection 
 
 
